@@ -1,0 +1,19 @@
+#############
+## Nette
+#############
+
+log
+temp
+
+#############
+## PhpStorm
+#############
+
+.idea/workspace.xml
+
+#############
+## Composer
+#############
+
+vendor
+/composer.lock
