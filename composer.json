@@ -2,7 +2,7 @@
 	"name": "stekycz/nette-date-paginator",
 	"description" : "DatePaginator - Nette Framework addon for easier paging by any period",
 	"keywords": ["date", "paginator", "Nette", "period"],
-	"version": "1.1.0",
+	"version": "1.1.0-alpha",
 	"license": "MIT",
 	"authors": [
 		{
