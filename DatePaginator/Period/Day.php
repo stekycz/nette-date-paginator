@@ -19,7 +19,7 @@ class Day extends Object implements IPeriod {
 	 * @return string
 	 */
 	public function getName() {
-		return $this->getReflection()->getName();
+		return $this->getReflection()->getShortName();
 	}
 
 	/**

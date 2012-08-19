@@ -19,7 +19,7 @@ class Month extends Object implements IPeriod {
 	 * @return string
 	 */
 	public function getName() {
-		return $this->getReflection()->getName();
+		return $this->getReflection()->getShortName();
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Month extends Object implements IPeriod {
 	 */
 	public function normalizeDate(DateTime $date) {
 		$date = clone $date;
-		return $date->modify('first day of month');
+		return $date->modify('first day of this month')->setTime(0, 0, 0);
 	}
 
 }

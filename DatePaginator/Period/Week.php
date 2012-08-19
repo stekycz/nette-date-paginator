@@ -19,7 +19,7 @@ class Week extends Object implements IPeriod {
 	 * @return string
 	 */
 	public function getName() {
-		return $this->getReflection()->getName();
+		return $this->getReflection()->getShortName();
 	}
 
 	/**
@@ -40,7 +40,9 @@ class Week extends Object implements IPeriod {
 	 */
 	public function normalizeDate(DateTime $date) {
 		$date = clone $date;
-		return $date->modify('first day of week');
+		// Pokud dnes není pondělí, tak nastav poslední pondělí
+		$date = $date->format('N') != 1 ? $date->modify('previous monday') : $date;
+		return $date->setTime(0, 0, 0);
 	}
 
 }
