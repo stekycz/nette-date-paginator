@@ -1,6 +1,6 @@
 <?php
 
-namespace DatePaginator\tests\Period;
+namespace steky\nette\DatePaginator\tests\Period;
 use \steky\nette\DatePaginator\Period\Month;
 use \PHPUnit_Framework_TestCase;
 use \DateTime;

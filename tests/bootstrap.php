@@ -24,3 +24,7 @@ $configurator->enableDebugger(TEST_DIR . '/../log', 'martin.stekl@gmail.com');
 
 // Enable RobotLoader - this will load all classes automatically
 $configurator->setTempDirectory(TEST_DIR . '/../temp');
+
+$configurator->createRobotLoader()
+	->addDirectory(TEST_DIR)
+	->register();
