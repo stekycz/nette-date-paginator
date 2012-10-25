@@ -110,6 +110,9 @@ class DatePaginator extends Object {
 		$previous_date = clone $this->date;
 		$previous_date = $previous_date->modify('- ' . $this->period->getPeriod());
 		$closest_previous = $this->period->normalizeDate($this->model->getClosestPrevious($this->date));
+		if ($closest_previous < $this->model->getOldestDate()) {
+			$closest_previous = $this->model->getOldestDate();
+		}
 		if ($closest_previous < $previous_date) {
 			$previous_date = clone $closest_previous;
 		}
@@ -129,6 +132,9 @@ class DatePaginator extends Object {
 		$next_date = clone $this->date;
 		$next_date = $next_date->modify('+ ' . $this->period->getPeriod());
 		$closest_next = $this->period->normalizeDate($this->model->getClosestNext($this->date));
+		if ($closest_next > $this->model->getNewestDate()) {
+			$closest_next = $this->model->getNewestDate();
+		}
 		if ($closest_next > $next_date) {
 			$next_date = clone $closest_next;
 		}
@@ -139,11 +145,11 @@ class DatePaginator extends Object {
 	 * Vrací počet dní mezi nejstarším a nejnovějším datem.
 	 *
 	 * @return int
-	 * @throws InvalidStateException Pokud zjistíme, že neest date je starší než oldest
+	 * @throws \steky\nette\DatePaginator\InvalidStateException Pokud zjistíme, že neest date je starší než oldest
 	 */
 	public function getDays() {
 		if ($this->getNewestDate() < $this->getOldestDate()) {
-			throw new InvalidStateException('Newest date is older than Oldest date.');
+			throw new InvalidStateException('Newest date cannot be older than Oldest date.');
 		}
 		$difference = $this->getNewestDate()->diff($this->getOldestDate());
 		return (int) $difference->days;
