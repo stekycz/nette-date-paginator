@@ -40,7 +40,7 @@ class Model extends Object implements IModel {
 	 */
 	public function getClosestPrevious(DateTime $current_date) {
 		$current_date = clone $current_date;
-		return $current_date->modify('- 1 day');
+		return $current_date->modify('- 2 day');
 	}
 
 	/**
@@ -52,7 +52,7 @@ class Model extends Object implements IModel {
 	 */
 	public function getClosestNext(DateTime $current_date) {
 		$current_date = clone $current_date;
-		return $current_date->modify('+ 1 day');
+		return $current_date->modify('+ 2 day');
 	}
 
 }

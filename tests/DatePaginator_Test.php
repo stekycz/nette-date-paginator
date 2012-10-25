@@ -4,6 +4,7 @@ namespace steky\nette\DatePaginator\tests;
 use \steky\nette\DatePaginator\DatePaginator;
 use \steky\nette\DatePaginator\Period\Day;
 use \steky\nette\DatePaginator\tests\Model;
+use \steky\nette\DatePaginator\tests\ErrorModel;
 use \PHPUnit_Framework_TestCase;
 use \DateTime;
 
@@ -143,6 +144,15 @@ class DatePaginator_Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * @expectedException \steky\nette\DatePaginator\InvalidStateException
+	 */
+	public function testGetDaysError() {
+		$date_paginator = $this->datePaginator;
+		$date_paginator->setModel(new ErrorModel());
+		$date_paginator->getDays();
+	}
+
+	/**
 	 * @dataProvider dataProviderGetPreviousDate
 	 * @param \DateTime $expected
 	 * @param \DateTime $current
@@ -155,11 +165,18 @@ class DatePaginator_Test extends PHPUnit_Framework_TestCase {
 
 	public function dataProviderGetPreviousDate() {
 		return array(
-			array(new DateTime('2012-07-22 00:00:00'), new DateTime('2012-07-23 00:00:00')),
-			array(new DateTime('2012-07-21 00:00:00'), new DateTime('2012-07-22 00:00:00')),
-			array(new DateTime('2012-07-18 00:00:00'), new DateTime('2012-07-19 00:00:00')),
+			array(new DateTime('2012-07-21 00:00:00'), new DateTime('2012-07-23 00:00:00')),
+			array(new DateTime('2012-07-20 00:00:00'), new DateTime('2012-07-22 00:00:00')),
+			array(new DateTime('2012-07-17 00:00:00'), new DateTime('2012-07-19 00:00:00')),
 			array(new DateTime('2012-06-14 00:00:00'), new DateTime('2012-06-14 00:00:00')),
 		);
+	}
+
+	public function testGetPreviousDateReflection() {
+		$date_paginator = $this->datePaginator;
+		$date_paginator->setDate(new DateTime('2012-06-15 00:00:00'));
+		$previous_date = $date_paginator->getPreviousDate();
+		$this->assertEquals(new DateTime('2012-06-14 00:00:00'), $previous_date);
 	}
 
 	/**
@@ -175,11 +192,18 @@ class DatePaginator_Test extends PHPUnit_Framework_TestCase {
 
 	public function dataProviderGetNextDate() {
 		return array(
-			array(new DateTime('2012-07-24 00:00:00'), new DateTime('2012-07-23 00:00:00')),
-			array(new DateTime('2012-07-25 00:00:00'), new DateTime('2012-07-24 00:00:00')),
-			array(new DateTime('2012-07-28 00:00:00'), new DateTime('2012-07-27 00:00:00')),
+			array(new DateTime('2012-07-25 00:00:00'), new DateTime('2012-07-23 00:00:00')),
+			array(new DateTime('2012-07-26 00:00:00'), new DateTime('2012-07-24 00:00:00')),
+			array(new DateTime('2012-07-29 00:00:00'), new DateTime('2012-07-27 00:00:00')),
 			array(new DateTime('2012-09-14 00:00:00'), new DateTime('2012-09-14 00:00:00')),
 		);
+	}
+
+	public function testGetNextDateReflection() {
+		$date_paginator = $this->datePaginator;
+		$date_paginator->setDate(new DateTime('2012-09-13 00:00:00'));
+		$next_date = $date_paginator->getNextDate();
+		$this->assertEquals(new DateTime('2012-09-14 00:00:00'), $next_date);
 	}
 
 }
