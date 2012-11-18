@@ -37,7 +37,7 @@ class Day extends Object implements IPeriod {
      * @return string
      */
     public function getFormatString() {
-        return 'j. n. Y';
+        return 'm/d/Y';
     }
 
     /**
