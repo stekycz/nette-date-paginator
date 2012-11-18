@@ -31,7 +31,16 @@ class Day extends Object implements IPeriod {
 		return '1 day';
 	}
 
-	/**
+    /**
+     * Vrací formátovací řetězec pro datum.
+     *
+     * @return string
+     */
+    public function getFormatString() {
+        return 'j. n. Y';
+    }
+
+    /**
 	 * Provede normalizaci data pro danou periodu. Jedná-li se o den zaokrouhlí na půlnoc daného data.
 	 * Pro hodinovou periodu na začátek hodiny, tedy např.: 13:00:00.
 	 *

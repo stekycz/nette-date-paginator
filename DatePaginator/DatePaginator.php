@@ -69,6 +69,15 @@ class DatePaginator extends Object {
 		return $this;
 	}
 
+    /**
+     * Vrací formátovací řetězec pro datum.
+     *
+     * @return string
+     */
+    public function getFormatString() {
+        return $this->period->getFormatString();
+    }
+
 	/**
 	 * @return \DateTime
 	 */

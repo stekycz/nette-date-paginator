@@ -6,15 +6,15 @@
 <div class="date-paginator btn-toolbar">
 	<div class="btn-group">
 		{if $paginator->isOldest()}
-			<span class="btn disabled"><i class="icon-fast-backward"></i> Oldest</span>
+			<span class="btn disabled"><i class="icon-fast-backward"></i> {$paginator->getOldestDate()|date:$paginator->getFormatString()}</span>
 		{else}
-			<a n:href="this, 'date' => $paginator->getOldestDate()->format('Y-m-d')" class="btn"><i class="icon-fast-backward"></i> Oldest</a>
+			<a n:href="this, 'date' => $paginator->getOldestDate()->format('Y-m-d')" class="btn"><i class="icon-fast-backward"></i> {$paginator->getOldestDate()|date:$paginator->getFormatString()}</a>
 		{/if}
 
 		{if $paginator->isOldest()}
-			<span class="btn disabled"><i class="icon-step-backward"></i> Previous</span>
+			<span class="btn disabled"><i class="icon-step-backward"></i> {$paginator->getPreviousDate()|date:$paginator->getFormatString()}</span>
 		{else}
-			<a n:href="this, 'date' => $paginator->getPreviousDate()->format('Y-m-d')" class="btn"><i class="icon-step-backward"></i> Previous</a>
+			<a n:href="this, 'date' => $paginator->getPreviousDate()->format('Y-m-d')" class="btn"><i class="icon-step-backward"></i> {$paginator->getPreviousDate()|date:$paginator->getFormatString()}</a>
 		{/if}
 	</div>
 
@@ -30,15 +30,15 @@
 
 	<div class="btn-group">
 		{if $paginator->isNewest()}
-			<span class="btn disabled">Next <i class="icon-step-forward"></i></span>
+			<span class="btn disabled">{$paginator->getNextDate()|date:$paginator->getFormatString()} <i class="icon-step-forward"></i></span>
 		{else}
-			<a n:href="this, 'date' => $paginator->getNextDate()->format('Y-m-d')" class="btn">Next <i class="icon-step-forward"></i></a>
+			<a n:href="this, 'date' => $paginator->getNextDate()->format('Y-m-d')" class="btn">{$paginator->getNextDate()|date:$paginator->getFormatString()} <i class="icon-step-forward"></i></a>
 		{/if}
 
 		{if $paginator->isNewest()}
-			<span class="btn disabled">Newest <i class="icon-fast-forward"></i></span>
+			<span class="btn disabled">{$paginator->getNewestDate()|date:$paginator->getFormatString()} <i class="icon-fast-forward"></i></span>
 		{else}
-			<a n:href="this, 'date' => $paginator->getNewestDate()->format('Y-m-d')" class="btn">Newest <i class="icon-fast-forward"></i></a>
+			<a n:href="this, 'date' => $paginator->getNewestDate()->format('Y-m-d')" class="btn">{$paginator->getNewestDate()|date:$paginator->getFormatString()} <i class="icon-fast-forward"></i></a>
 		{/if}
 	</div>
 </div>

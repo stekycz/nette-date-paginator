@@ -31,6 +31,15 @@ class Week extends Object implements IPeriod {
 		return '1 week';
 	}
 
+    /**
+     * Vrací formátovací řetězec pro datum.
+     *
+     * @return string
+     */
+    public function getFormatString() {
+        return 'W. week of Y';
+    }
+
 	/**
 	 * Provede normalizaci data pro danou periodu. Jedná-li se o den zaokrouhlí na půlnoc daného data.
 	 * Pro hodinovou periodu na začátek hodiny, tedy např.: 13:00:00.

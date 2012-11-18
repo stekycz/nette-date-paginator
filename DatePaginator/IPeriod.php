@@ -27,6 +27,14 @@ interface IPeriod {
 	 */
 	public function getPeriod();
 
+    /**
+     * Vrací formátovací řetězec pro datum.
+     *
+     * @abstract
+     * @return string
+     */
+    public function getFormatString();
+
 	/**
 	 * Provede normalizaci data pro danou periodu. Jedná-li se o den zaokrouhlí na půlnoc daného data.
 	 * Pro hodinovou periodu na začátek hodiny, tedy např.: 13:00:00.
