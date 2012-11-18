@@ -37,7 +37,7 @@ class Week extends Object implements IPeriod {
      * @return string
      */
     public function getFormatString() {
-        return 'W. week of Y';
+        return 'W. \w\e\ek \of Y';
     }
 
 	/**
